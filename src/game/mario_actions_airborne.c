@@ -919,6 +919,21 @@ s32 act_ground_pound(struct MarioState *m) {
     u32 stepResult;
     f32 yOffset;
 
+if (m->input & INPUT_B_PRESSED) {
+    // Ground pound dive
+            set_mario_action(m, ACT_DIVE, 0);
+            m->vel[1] = 30.0f; //[0] is X, [1] is Y,
+            // and [2] is Z
+            m->forwardVel = 40.0f; // forwardVel affects X
+            // and Z velocity
+            m->faceAngle[1] = m->intendedYaw;
+            // faceAngle is a collection of 3 variables for Mario's rotation
+            // intendedYaw is basically where the analog stick points relative to camera
+            return FALSE; // Ends the function early, so that other
+            // numbers don't affect the dive
+            
+        }
+
     play_sound_if_no_flag(m, SOUND_ACTION_THROW, MARIO_ACTION_SOUND_PLAYED);
 
     if (m->actionState == 0) {
