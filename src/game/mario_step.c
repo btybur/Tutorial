@@ -614,8 +614,8 @@ s32 perform_air_step(struct MarioState *m, u32 stepArg) {
     s32 stepResult = AIR_STEP_NONE;
 
     m->wall = NULL;
-    // Change Mario speed to 1/2
-    for (i = 0; i < 2; i++) {
+    
+    for (i = 0; i < 4; i++) {
         intendedPos[0] = m->pos[0] + m->vel[0] / 4.0f;
         intendedPos[1] = m->pos[1] + m->vel[1] / 4.0f;
         intendedPos[2] = m->pos[2] + m->vel[2] / 4.0f;
